@@ -40,3 +40,29 @@
 ✔ **Observabilidad**: Con `LiveData`, los cambios en los datos se reflejan automáticamente en la UI.
 ✔ **Escalabilidad**: Fácil de mantener y escalar cuando la app crece.
 */
+
+
+¿Qué es LiveData?
+
+📌 LiveData es una clase de datos observable que forma parte de la arquitectura de Android Jetpack. Permite que los componentes de la interfaz de usuario (UI) observen los datos sin necesidad de gestionarlos manualmente, y se asegura de que la UI siempre esté actualizada con la última información.
+
+🛠️ Características principales:
+
+Observabilidad 🧐
+Permite que actividades, fragmentos u otros observadores se suscriban para recibir actualizaciones cuando los datos cambian.
+
+Consciente del ciclo de vida ⏳
+Solo notifica a los observadores activos (los que están en estado STARTED o RESUMED). Esto evita errores como actualizaciones cuando la actividad está en segundo plano o destruida.
+
+Actualización automática de UI 🔄
+Cada vez que los datos cambian, la UI que está observando el LiveData se actualiza automáticamente.
+No hay fugas de memoria 💧
+
+Se gestiona internamente con los LifecycleOwners (como Activity o Fragment), lo que evita que se mantengan referencias innecesarias y posibles memory leaks.
+📦 Componentes relacionados:
+
+MutableLiveData:
+Es una subclase de LiveData que permite modificar el valor almacenado mediante setValue() o postValue(). Ideal para usar dentro de ViewModel.
+
+Observer:
+Es la interfaz que implementan los observadores para reaccionar a cambios en los datos.
