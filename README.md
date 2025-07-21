@@ -66,3 +66,26 @@ Es una subclase de LiveData que permite modificar el valor almacenado mediante s
 
 Observer:
 Es la interfaz que implementan los observadores para reaccionar a cambios en los datos.
+
+
+Ejemplo básico de uso:
+// ViewModel
+public class MyViewModel extends ViewModel {
+    private MutableLiveData<String> nombre = new MutableLiveData<>();
+
+    public LiveData<String> getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nuevoNombre) {
+        nombre.setValue(nuevoNombre);
+    }
+}
+
+// Activity o Fragment
+myViewModel.getNombre().observe(this, new Observer<String>() {
+    @Override
+    public void onChanged(String nuevoNombre) {
+        textView.setText(nuevoNombre);
+    }
+});
